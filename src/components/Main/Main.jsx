@@ -3,7 +3,7 @@ import { Tabs, Container, Autocomplete, Center, Flex, Group, Button, Paper, Divi
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import  Example  from "../Bar/Bar";
+import SeasonalDemand from "../Bar/Bar";
 
 const Main = () => {
 
@@ -24,41 +24,12 @@ const Main = () => {
         return [...acc, item];
     }, []);
 
-    // const data = tableData.map((item) => {
-
-    //     return {
-    //         name: item.date,
-    //         "b": item.fly_class.b,
-    //         "c": item.fly_class.c,
-    //         "d": item.fly_class.d,
-    //         "e": item.fly_class.e,
-    //         "g": item.fly_class.g,
-    //         "h": item.fly_class.h,
-    //         "i": item.fly_class.i,
-    //         "j": item.fly_class.j,
-    //         "k": item.fly_class.k,
-    //         "l": item.fly_class.l,
-    //         "m": item.fly_class.m,
-    //         "n": item.fly_class.n,
-    //         "o": item.fly_class.o,
-    //         "p": item.fly_class.p,
-    //         "q": item.fly_class.q,
-    //         "r": item.fly_class.r,
-    //         "t": item.fly_class.t,
-    //         "u": item.fly_class.u,
-    //         "v": item.fly_class.v,
-    //         "x": item.fly_class.x,
-    //         "y": item.fly_class.y,
-    //         "z": item.fly_class.z
-    //     }
-    // })
-
     const fetchToData = () => {
-        fetch('/seasonality?flt_num=1135', {
+        fetch('/seasonality', {
             method: 'POST',
-            // body: JSON.stringify({
-            //     flt_num: 1135
-            // }),
+            body: JSON.stringify({
+                flt_num: 1135
+            }),
             headers: { "content-type": "application/json" }
         })
             .then((res) => res.json())
@@ -174,15 +145,15 @@ const Main = () => {
 
                 </Tabs>
             </Center>
-            <Center>
+           { tableData.length?<Center>
                 <Paper miw={'960px'} w={'70%'} mah={'740px'} h={700} p={'xs'} mt={'lg'}>
 
                     <Center>
-                        <Example />
+                        <SeasonalDemand dataSaeson={tableData} />
 
                     </Center>
                 </Paper >
-            </Center>
+            </Center>:null}
 
         </Container>
         {/* <div style={{ minWidth: '960px' }}>
