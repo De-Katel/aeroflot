@@ -47,12 +47,12 @@ const data = [
 ];
 
 export default class Example extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/s/stacked-bar-chart-s47i2';
-
+ 
   render() {
     return (
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
+        
           width={500}
           height={300}
           data={data}
